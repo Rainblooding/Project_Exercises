@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.rainblooding.fx.gui.LoginController">
+   <children>
+      <Label fx:id="labelUsername" layoutX="84.0" layoutY="45.0" text="用户名" />
+      <Label fx:id="labelPassword" layoutX="84.0" layoutY="73.0" text="密码" />
+      <TextField fx:id="inputPassword" layoutX="131.0" layoutY="41.0" promptText="用户名" />
+      <TextField fx:id="inputUsername" layoutX="131.0" layoutY="69.0" promptText="密码" />
+      <Button fx:id="buttonLogin" layoutX="131.0" layoutY="137.0" mnemonicParsing="false" onMouseReleased="#loginBtnReleased" text="%s" />
+      <Button fx:id="buttonRegister" layoutX="212.0" layoutY="137.0" mnemonicParsing="false" text="注册" />
+   </children>
+</AnchorPane>

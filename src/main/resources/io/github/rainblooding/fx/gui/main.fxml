@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="459.0"
+            prefWidth="850.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="io.github.rainblooding.fx.gui.MainController">
+    <children>
+        <CheckBox fx:id="checkBoxTop" contentDisplay="CENTER" layoutX="545.0" layoutY="17.0" mnemonicParsing="false"
+                  onAction="#changeUpTop" prefHeight="16.0" prefWidth="52.0" text="置顶" textAlignment="CENTER"/>
+        <Button layoutX="310.0" layoutY="230.0" mnemonicParsing="false" onAction="#clockRun" prefHeight="34.0"
+                prefWidth="70.0" text="专注计时"/>
+        <Button layoutX="390.0" layoutY="230.0" mnemonicParsing="false" onAction="#timeStop" prefHeight="34.0"
+                prefWidth="70.0" text="停止计时"/>
+        <Button layoutX="470.0" layoutY="230.0" mnemonicParsing="false" onAction="#sleepRun" prefHeight="34.0"
+                prefWidth="70.0" text="休息计时"/>
+        <Button layoutX="310.0" layoutY="272.0" mnemonicParsing="false" onAction="#addTask" prefHeight="34.0"
+                prefWidth="70.0" text="添加待办"/>
+        <Button layoutX="470.0" layoutY="272.0" mnemonicParsing="false" onAction="#addbusyTask" prefHeight="34.0"
+                prefWidth="70.0" text="紧急待办"/>
+        <Button layoutX="390.0" layoutY="272.0" mnemonicParsing="false" onAction="#queryTask" prefHeight="34.0"
+                prefWidth="70.0" text="查看列表"/>
+        <Button layoutX="310.0" layoutY="316.0" mnemonicParsing="false" onAction="#clearCache" prefHeight="34.0"
+                prefWidth="70.0" text="刷新缓存"/>
+        <TableView fx:id="tview" layoutX="14.0" layoutY="34.0" onMousePressed="#ClickTwo" prefHeight="343.0"
+                   prefWidth="291.0">
+            <columns>
+                <TableColumn fx:id="colTasktitle" prefWidth="96.00" text="任务标题"/>
+                <TableColumn fx:id="colTaskinfo" prefWidth="96.00" text="任务描述"/>
+                <TableColumn fx:id="colmaketime" prefWidth="96.00" text="创建时间"/>
+            </columns>
+        </TableView>
+        <TableView fx:id="busytview" layoutX="547.0" layoutY="34.0" onMousePressed="#ClickTwo" prefHeight="343.0"
+                   prefWidth="290.0">
+            <columns>
+                <TableColumn fx:id="colBusyTasktitle" prefWidth="96.00" text="任务标题"/>
+                <TableColumn fx:id="colBusyTaskinfo" prefWidth="96.00" text="任务描述"/>
+                <TableColumn fx:id="colbusymaketime" prefWidth="96.00" text="创建时间"/>
+            </columns>
+        </TableView>
+        <Label alignment="CENTER" layoutX="84.0" layoutY="15.0" prefHeight="21.0" prefWidth="142.0"
+               text="-----待办列表-----" textAlignment="CENTER" textOverrun="CLIP"/>
+        <Label alignment="CENTER" layoutX="628.0" layoutY="15.0" prefHeight="21.0" prefWidth="127.0"
+               text="-----紧急待办-----" textAlignment="CENTER"/>
+        <Label fx:id="timeclock" alignment="CENTER" layoutX="305.0" layoutY="91.0" prefHeight="66.0" prefWidth="240.0"
+               text="00:25:00" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+            <font>
+                <Font name="Agency FB" size="80.0"/>
+            </font>
+        </Label>
+        <Text layoutX="50.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="整体业务规则" wrappingWidth="88.0"/>
+        <Label layoutX="80.0" layoutY="403.0" text="1 : 专注25分钟,休息5分钟。"/>
+        <Label layoutX="80.0" layoutY="419.0" text="2 : 中间如果有急活,先增加【紧急代办】"/>
+        <Label layoutX="80.0" layoutY="434.0" text="3 : 如果不能等待,则需要将本次时间停止，待下次重新开始; 不到25则取消当前番茄时间。"/>
+
+    </children>
+</AnchorPane>
