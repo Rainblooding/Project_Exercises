@@ -1,5 +1,8 @@
 package io.github.rainblooding._3D.base;
 
+/**
+ * 三维世界的点
+ */
 public class _3DLine {
 
     private _3DPoint start;

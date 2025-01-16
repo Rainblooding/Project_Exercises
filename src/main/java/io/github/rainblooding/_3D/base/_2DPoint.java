@@ -1,5 +1,8 @@
 package io.github.rainblooding._3D.base;
 
+/**
+ * 2d点
+ */
 public class _2DPoint {
 
     private int x;

@@ -10,6 +10,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * obj文件加载器
+ *
+ * @author rainblooding
+ */
 public class ObjLoader {
 
     public static void loadObj(String filename, List<float[]> vertices, List<int[]> edges) throws IOException {
@@ -45,11 +50,20 @@ public class ObjLoader {
         reader.close();
     }
 
+    /**
+     * 根据文件加载模型
+     *
+     * @param filename
+     * @return
+     * @throws IOException
+     */
     public static _3DModel loadObj(String filename) throws IOException {
+        // 获取顶点 和 连线
         List<float[]> vertices = new ArrayList<>();
         List<int[]> edges = new ArrayList<>();
         loadObj(filename, vertices, edges);
 
+        // 封装起来
         List<_3DPoint> _3DVertices = new ArrayList<>();
         List<_3DLine> _3DEdges = new ArrayList<>();
         for (float[] vertex : vertices) {
@@ -58,6 +72,7 @@ public class ObjLoader {
         for (int[] edge : edges) {
             _3DEdges.add(new _3DLine(_3DVertices.get(edge[0]), _3DVertices.get(edge[1])));
         }
+        // 创建模型
         return new _3DModel(_3DVertices, _3DEdges);
     }
 }
