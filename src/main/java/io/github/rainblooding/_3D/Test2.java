@@ -1,5 +1,7 @@
 package io.github.rainblooding._3D;
 
+import io.github.rainblooding._3D.object.ObjLoader;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Line2D;
@@ -17,7 +19,7 @@ public class Test2 extends JPanel {
 
     public Test2() {
         try {
-            ObjLoader.loadObj("E:\\item\\java\\my-open-java\\LibertStatue.obj", vertices, edges);
+            ObjLoader.loadObj("E:\\item\\java\\Project_Exercises\\src\\main\\resources\\3D\\8.obj", vertices, edges);
         } catch (IOException e) {
             e.printStackTrace();
         }

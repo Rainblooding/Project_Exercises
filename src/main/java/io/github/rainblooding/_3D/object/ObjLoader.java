@@ -1,8 +1,13 @@
-package io.github.rainblooding._3D;
+package io.github.rainblooding._3D.object;
+
+import io.github.rainblooding._3D.base._3DLine;
+import io.github.rainblooding._3D.base._3DModel;
+import io.github.rainblooding._3D.base._3DPoint;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ObjLoader {
@@ -38,5 +43,21 @@ public class ObjLoader {
             }
         }
         reader.close();
+    }
+
+    public static _3DModel loadObj(String filename) throws IOException {
+        List<float[]> vertices = new ArrayList<>();
+        List<int[]> edges = new ArrayList<>();
+        loadObj(filename, vertices, edges);
+
+        List<_3DPoint> _3DVertices = new ArrayList<>();
+        List<_3DLine> _3DEdges = new ArrayList<>();
+        for (float[] vertex : vertices) {
+            _3DVertices.add(new _3DPoint(vertex[0], vertex[1], vertex[2]));
+        }
+        for (int[] edge : edges) {
+            _3DEdges.add(new _3DLine(_3DVertices.get(edge[0]), _3DVertices.get(edge[1])));
+        }
+        return new _3DModel(_3DVertices, _3DEdges);
     }
 }
