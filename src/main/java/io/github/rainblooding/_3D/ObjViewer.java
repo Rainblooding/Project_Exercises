@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.geom.Line2D;
+import java.io.File;
 import java.io.IOException;
 
 public class ObjViewer extends JPanel implements Move {
@@ -51,16 +52,14 @@ public class ObjViewer extends JPanel implements Move {
             }
         });
 
-        try {
-            model = ObjLoader.loadObj("E:\\item\\java\\Project_Exercises\\src\\main\\resources\\3D\\LibertStatue.obj");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
         Timer timer = new Timer(50, e -> {
             repaint();
         });
         timer.start();
+    }
+
+    public void loadObj(File file) {
+        model = ObjLoader.loadObj(file);
     }
 
 
@@ -79,6 +78,9 @@ public class ObjViewer extends JPanel implements Move {
 
         // 设置画笔为黑色
         g2d.setColor(Color.WHITE);
+        if (model == null) {
+            return;
+        }
 
         for (_3DLine edge : model.getEdges()) {
             _2DPoint start2D = _3DTo2D(edge.getStart(), model.get3DLocation());
@@ -127,9 +129,11 @@ public class ObjViewer extends JPanel implements Move {
 
 
     public void move(int x, int y, int z) {
-        _3DPoint location = this.get3DLocation();
-        _3DPoint newLocation = new _3DPoint(location.getX() + x, location.getY() + y, location.getZ() + z);
-        this.set3DLocation(newLocation);
+//        _3DPoint location = this.get3DLocation();
+//        _3DPoint newLocation = new _3DPoint(location.getX() + x, location.getY() + y, location.getZ() + z);
+//        this.set3DLocation(newLocation);
+        model.move(x, y, z);
+        _3DPoint newLocation = model.get3DLocation();
         System.out.printf("(%f,%f,%f)\n", newLocation.getX(), newLocation.getY(), newLocation.getZ());
     }
 

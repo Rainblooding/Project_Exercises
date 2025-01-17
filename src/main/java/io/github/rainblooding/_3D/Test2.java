@@ -18,11 +18,8 @@ public class Test2 extends JPanel {
     private final List<int[]> edges = new ArrayList<>();
 
     public Test2() {
-        try {
-            ObjLoader.loadObj("E:\\item\\java\\Project_Exercises\\src\\main\\resources\\3D\\8.obj", vertices, edges);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+        ObjLoader.loadObj("E:\\item\\java\\Project_Exercises\\src\\main\\resources\\3D\\8.obj", vertices, edges);
 
         Timer timer = new Timer(50, e -> {
 //           angleX += 2;
