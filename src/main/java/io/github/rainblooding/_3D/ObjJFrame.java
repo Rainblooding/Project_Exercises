@@ -58,6 +58,12 @@ public class ObjJFrame extends JFrame {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
+
+            try {
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
             ObjJFrame ex = new ObjJFrame();
             ex.setVisible(true);
         });
