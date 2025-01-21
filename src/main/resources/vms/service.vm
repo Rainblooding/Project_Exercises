@@ -1,0 +1,65 @@
+#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME};
+import com.jfinal.kit.Kv;
+import com.jfinal.kit.StrKit;
+import com.jfinal.plugin.activerecord.Db;
+import com.jfinal.plugin.activerecord.Page;
+import com.jfinal.plugin.activerecord.Record;
+import com.jfinal.plugin.activerecord.SqlPara;
+
+import cn.york.common.base.BaseApiService
+import cn.york.common.db.tx.TxEnable;
+import cn.york.common.tools.RetJson;
+
+import java.util.List;
+#end
+#parse("File Header.java")
+public class ${NAME}Service extends BaseApiService {
+
+
+#if($crud == "1")
+
+    /**
+    * 获取列表
+    #if($page == "1")
+    * @param page
+    * @param rows
+    #end
+    * @return
+    */
+    public RetJson list(#if($page == "1")int page, int rows#end) {
+    String sql = "select * from ${table}";
+        #if($page == "1")
+        SqlPara sqlPara = new SqlPara();
+        sqlPara.setSql(sql);
+        Page<Record> page = Db.use(this.getDb()).paginate(page, rows, sqlPara);
+            return RetJson.ok().set("rows", page.getList()).set("total", page.getTotalRow());
+        #else
+            List<Record> dataList = Db.use(this.getDb()).find(sql);
+            return RetJson.ok().set("rows", dataList).set("total", dataList.size());
+        #end
+    }
+
+    /**
+    * 查询详情
+    * @param id
+    * @return
+    */
+    public RetJson findById(#if($idType == "str")String id#else int id#end) {
+        String sql = "select * from ${table} where id = ?";
+        Record record = Db.use(this.getDb()).findFirst(sql, id);
+        return RetJson.ok().set("data", record);
+        }
+
+        public RetJson delete(String ids) {
+        if (StrKit.isBlank(ids)) {
+        return RetJson.fail().setMsg("请选择要删除的数据");
+        }
+        String[] idArray = ids.split(",");
+        #set($sql = '(#for(id : ids) #para(id) #for(!for.last),#end #end)')
+        String sql = "delete from ${table} where id in $sql";
+        Kv params = Kv.create().set("ids", idArray);
+        int count = Db.use(this.getDb()).templateByString(sql, params).update();
+        return RetJson.ok().set("count", count);
+    }
+#end
+}

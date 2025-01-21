@@ -1,0 +1,63 @@
+#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME};
+import cn.york.common.base.BaseApiController;
+import cn.york.common.tools.RetJson;
+import ${PACKAGE_NAME.replace("controller", "services")}.${NAME}Service;
+import com.jfinal.aop.Inject;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
+#end
+#parse("File Header.java")
+@Api(tags = "${NAME}Controller")
+public class ${NAME}Controller extends BaseApiController {
+#[[$NAME]]#
+@Inject
+${NAME}Service srv;
+
+#if($crud == "1")
+
+    @ApiOperation(value = "获取列表")
+    @ApiImplicitParams({
+        #if($page == "1")
+        @ApiImplicitParam(name = "page", value = "页数", defaultValue = "1", dataType="Int", required = true),
+        @ApiImplicitParam(name = "rows", value = "每页行数", defaultValue = "20",  dataType="Int", required = true),
+        #end
+    })
+    public void list() {
+        #if($page == "1")
+        int page = this.getInt("page", 1);
+        int rows = this.getInt("rows", 20);
+        RetJson ret = srv.list(page, rows);
+        #else
+        RetJson ret = srv.list(page, rows);
+        #end
+        this.renderJsonData(ret);
+    }
+
+
+    @ApiOperation(value = "查询详情")
+    @ApiImplicitParams({
+    @ApiImplicitParam(name = "id", value = "主键", required = true),
+    })
+    public void findById() {
+        #if($idType == "String")
+        String id = this.get("id");
+        #else
+        int id = this.getInt("id");
+        #end
+    RetJson ret = srv.findById(id);
+    this.renderJsonData(ret);
+    }
+
+    @ApiOperation(value = "删除")
+    @ApiImplicitParams({
+        @ApiImplicitParam(name = "ids", value = "主键", required = true),
+    })
+        public void del() {
+        String ids = this.get("ids");
+        RetJson ret = srv.delete(ids);
+        this.renderJsonData(ret);
+    }
+#end
+}
