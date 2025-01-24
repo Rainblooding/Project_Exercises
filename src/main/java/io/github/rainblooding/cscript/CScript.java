@@ -113,7 +113,14 @@ public class CScript {
 
 
     public static void main(String[] args) {
-        run("fun count(n) {if(n > 1) print n;}count(2);");
+        run("fun fib(n) {\n" +
+                "  if (n <= 1) return n;\n" +
+                "  return fib(n - 2) + fib(n - 1);\n" +
+                "}\n" +
+                "\n" +
+                "for (var i = 0; i < 20; i = i + 1) {\n" +
+                "  print fib(i);\n" +
+                "}");
     }
 
 }
