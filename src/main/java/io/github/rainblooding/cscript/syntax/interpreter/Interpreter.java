@@ -9,7 +9,7 @@ import io.github.rainblooding.cscript.syntax.Stmt;
 
 import java.util.List;
 
-public class Interpreter extends AssignInterpreter {
+public class Interpreter extends BlockInterpreter {
 
     public void interpret(List<Stmt> statements) {
         try {

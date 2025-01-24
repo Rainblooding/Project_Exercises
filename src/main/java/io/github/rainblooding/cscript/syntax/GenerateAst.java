@@ -11,8 +11,8 @@ import java.util.*;
 public class GenerateAst {
 
     public static void main(String[] args) throws IOException {
-//        defineStmtAst();
-        defineExprAst();
+        defineStmtAst();
+//        defineExprAst();
     }
 
     public static void defineExprAst() throws IOException {
@@ -34,6 +34,7 @@ public class GenerateAst {
         String packageName = "io.github.rainblooding.cscript.syntax";
         String targetPath = "E:\\item\\java\\Project_Exercises\\src\\main\\java\\io\\github\\rainblooding\\cscript\\syntax\\Stmt.java";
         defineAst(packageName, baseName, Arrays.asList(
+                "Block      : List<Stmt> statements",
                 "Expression : Expr expression",
                 "Print      : Expr expression",
                 "Var        : Token name, Expr initializer"

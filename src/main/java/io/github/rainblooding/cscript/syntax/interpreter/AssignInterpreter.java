@@ -2,7 +2,7 @@ package io.github.rainblooding.cscript.syntax.interpreter;
 
 import io.github.rainblooding.cscript.syntax.Expr;
 
-public class AssignInterpreter extends VarInterpreter {
+public abstract class AssignInterpreter extends VarInterpreter {
 
     @Override
     public Object visitAssignExpr(Expr.Assign expr) {
