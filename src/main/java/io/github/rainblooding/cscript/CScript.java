@@ -113,7 +113,9 @@ public class CScript {
 
 
     public static void main(String[] args) {
-        run("print 2 + 1;");
+        run("var a = 1;\n" +
+                "var b = 4;\n" +
+                "print a + b;");
     }
 
 }

@@ -45,8 +45,8 @@ public abstract class Stmt {
     }
 
     public static class Var extends Stmt {
-        final Token name;
-        final Expr initializer;
+        public final Token name;
+        public final Expr initializer;
 
         public Var( Token name,  Expr initializer ) {
             this.name = name;

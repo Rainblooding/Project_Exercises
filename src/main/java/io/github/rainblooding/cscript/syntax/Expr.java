@@ -83,7 +83,7 @@ public abstract class Expr {
     }
 
     public static class Variable extends Expr {
-        final Token name;
+        public final Token name;
 
         public Variable( Token name ) {
             this.name = name;
