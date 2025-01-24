@@ -113,14 +113,7 @@ public class CScript {
 
 
     public static void main(String[] args) {
-        run("var a = 0;\n" +
-                "var temp;\n" +
-                "\n" +
-                "for (var b = 1; a < 10000; b = temp + b) {\n" +
-                "  print a;\n" +
-                "  temp = a;\n" +
-                "  a = b;\n" +
-                "}");
+        run("print clock();");
     }
 
 }
