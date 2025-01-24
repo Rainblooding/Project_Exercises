@@ -11,6 +11,7 @@ public abstract class Stmt {
 
         R visitBlockStmt(Stmt.Block stmt);
         R visitExpressionStmt(Stmt.Expression stmt);
+        R visitIfStmt(Stmt.If stmt);
         R visitPrintStmt(Stmt.Print stmt);
         R visitVarStmt(Stmt.Var stmt);
     }
@@ -40,6 +41,25 @@ public abstract class Stmt {
         @Override
         public <R> R accept(Visitor<R> visitor) {
             return visitor.visitExpressionStmt(this);
+        }
+
+
+    }
+
+    public static class If extends Stmt {
+        public final Expr condition;
+        public final Stmt thenBranch;
+        public final Stmt elseBranch;
+
+        public If( Expr condition,  Stmt thenBranch,  Stmt elseBranch ) {
+            this.condition = condition;
+            this.thenBranch = thenBranch;
+            this.elseBranch = elseBranch;
+        }
+
+        @Override
+        public <R> R accept(Visitor<R> visitor) {
+            return visitor.visitIfStmt(this);
         }
 
 

@@ -5,7 +5,7 @@ import io.github.rainblooding.cscript.syntax.Stmt;
 
 import java.util.List;
 
-public class BlockInterpreter extends AssignInterpreter {
+public abstract class BlockInterpreter extends AssignInterpreter {
 
 
     @Override
