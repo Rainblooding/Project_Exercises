@@ -48,7 +48,7 @@ public class WhileParser extends IfParser {
      *
      * @return
      */
-    private Stmt whileStatement() {
+    protected Stmt whileStatement() {
         consume(LEFT_PAREN, "Expect '(' after 'while'.");
         Expr condition = expression();
         consume(RIGHT_PAREN, "Expect ')' after condition.");
