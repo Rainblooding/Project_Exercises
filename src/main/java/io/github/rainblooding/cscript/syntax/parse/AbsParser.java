@@ -22,7 +22,7 @@ public abstract class AbsParser {
     protected int current = 0;
 
 
-    private static class ParseError extends RuntimeException {}
+    protected static class ParseError extends RuntimeException {}
 
     protected AbsParser(List<Token> tokens) {
         this.tokens = tokens;

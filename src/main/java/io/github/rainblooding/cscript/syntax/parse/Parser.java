@@ -11,7 +11,7 @@ import java.util.List;
 
 import static io.github.rainblooding.cscript.base.TokenType.*;
 
-public class Parser extends StmtParser {
+public class Parser extends VarParser {
 
 
 
@@ -22,7 +22,7 @@ public class Parser extends StmtParser {
     public List<Stmt> parse () {
         List<Stmt> statements = new ArrayList<>();
         while (!isAtEnd()) {
-            statements.add(statement());
+            statements.add(declaration());
         }
         return statements;
     }

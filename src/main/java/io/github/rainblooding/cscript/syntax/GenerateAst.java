@@ -12,6 +12,20 @@ public class GenerateAst {
 
     public static void main(String[] args) throws IOException {
         defineStmtAst();
+        defineExprAst();
+    }
+
+    public static void defineExprAst() throws IOException {
+        String baseName = "Expr";
+        String packageName = "io.github.rainblooding.cscript.syntax";
+        String targetPath = "E:\\item\\java\\Project_Exercises\\src\\main\\java\\io\\github\\rainblooding\\cscript\\syntax\\Expr.java";
+        defineAst(packageName, baseName, Arrays.asList(
+                "Binary   : Expr left, Token operator, Expr right",
+                "Grouping : Expr expression",
+                "Literal  : Object value",
+                "Unary    : Token operator, Expr right",
+                "Variable : Token name"
+        ), targetPath);
     }
 
     public static void defineStmtAst() throws IOException {
@@ -20,7 +34,8 @@ public class GenerateAst {
         String targetPath = "E:\\item\\java\\Project_Exercises\\src\\main\\java\\io\\github\\rainblooding\\cscript\\syntax\\Stmt.java";
         defineAst(packageName, baseName, Arrays.asList(
                 "Expression : Expr expression",
-                "Print      : Expr expression"
+                "Print      : Expr expression",
+                "Var        : Token name, Expr initializer"
         ), targetPath);
     }
 

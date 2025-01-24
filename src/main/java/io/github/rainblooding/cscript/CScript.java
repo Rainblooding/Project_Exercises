@@ -5,6 +5,7 @@ import io.github.rainblooding.cscript.base.Token;
 import io.github.rainblooding.cscript.base.TokenType;
 import io.github.rainblooding.cscript.exception.RuntimeError;
 import io.github.rainblooding.cscript.syntax.*;
+import io.github.rainblooding.cscript.syntax.interpreter.Interpreter;
 import io.github.rainblooding.cscript.syntax.parse.Parser;
 
 import java.io.BufferedReader;
