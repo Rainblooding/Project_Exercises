@@ -8,12 +8,33 @@ import java.util.List;
 
 import static io.github.rainblooding.cscript.base.TokenType.*;
 
+/**
+ * 声明变量
+ *
+ * program        → declaration* EOF ;
+ *
+ * declaration    → varDecl
+ *                | statement ;
+ *
+ * statement      → exprStmt
+ *                | printStmt ;
+ *
+ * varDecl        → "var" IDENTIFIER ( "=" expression )? ";" ;
+ *
+ */
 public abstract class VarParser extends StmtParser {
 
     protected VarParser(List<Token> tokens) {
         super(tokens);
     }
 
+    /**
+     *
+     * declaration    → varDecl
+     *                | statement ;
+     *
+     * @return
+     */
     protected Stmt declaration() {
         try {
             if (match(VAR)) return varDeclaration();
@@ -25,6 +46,12 @@ public abstract class VarParser extends StmtParser {
         }
     }
 
+    /**
+     *
+     * varDecl        → "var" IDENTIFIER ( "=" expression )? ";" ;
+     *
+     * @return
+     */
     protected Stmt varDeclaration() {
         Token name = consume(IDENTIFIER, "Expect variable name.");
 
@@ -38,6 +65,14 @@ public abstract class VarParser extends StmtParser {
     }
 
 
+    /**
+     * primary        → "true" | "false" | "nil"
+     *                | NUMBER | STRING
+     *                | "(" expression ")"
+     *                | IDENTIFIER ;
+     *
+     * @return
+     */
     @Override
     protected Expr primary() {
         if (match(FALSE)) return new Expr.Literal(false);

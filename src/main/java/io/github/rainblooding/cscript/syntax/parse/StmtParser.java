@@ -9,6 +9,14 @@ import java.util.List;
 import static io.github.rainblooding.cscript.base.TokenType.PRINT;
 import static io.github.rainblooding.cscript.base.TokenType.SEMICOLON;
 
+/**
+ *
+ * program        → statement* EOF ;
+ *
+ * statement      → exprStmt
+ *                | printStmt ;
+ *
+ */
 public abstract class StmtParser extends ExprParser {
 
 
@@ -17,13 +25,9 @@ public abstract class StmtParser extends ExprParser {
     }
 
     /**
-     * program        → statement* EOF ;
      *
      * statement      → exprStmt
      *                | printStmt ;
-     *
-     * exprStmt       → expression ";" ;
-     * printStmt      → "print" expression ";" ;
      *
      * @return
      */

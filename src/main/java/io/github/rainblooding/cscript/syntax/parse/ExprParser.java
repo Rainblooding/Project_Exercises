@@ -8,6 +8,21 @@ import java.util.List;
 
 import static io.github.rainblooding.cscript.base.TokenType.*;
 
+/**
+ * 表达式
+ *
+ * expression     → equality ;
+ * equality       → comparison ( ( "!=" | "==" ) comparison )* ;
+ * comparison     → term ( ( ">" | ">=" | "<" | "<=" ) term )* ;
+ * term           → factor ( ( "-" | "+" ) factor )* ;
+ * factor         → unary ( ( "/" | "*" ) unary )* ;
+ * unary          → ( "!" | "-" ) unary
+ *                | primary ;
+ * primary        → NUMBER | STRING | "true" | "false" | "nil"
+ *                | "(" expression ")" ;
+ *
+ * @return
+ */
 public abstract class ExprParser extends AbsParser {
 
     protected ExprParser(List<Token> tokens) {

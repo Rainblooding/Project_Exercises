@@ -1,12 +1,10 @@
 package io.github.rainblooding.cscript.syntax.interpreter;
 
-import io.github.rainblooding.cscript.CScript;
 import io.github.rainblooding.cscript.base.Token;
 import io.github.rainblooding.cscript.exception.RuntimeError;
 import io.github.rainblooding.cscript.syntax.Expr;
 import io.github.rainblooding.cscript.syntax.Stmt;
 
-import java.util.List;
 
 public abstract class AbsInterpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 

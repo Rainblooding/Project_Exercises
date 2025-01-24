@@ -7,16 +7,37 @@ import java.util.List;
 
 import static io.github.rainblooding.cscript.base.TokenType.*;
 
+/**
+ * 赋值
+ *
+ * expression     → assignment ;
+ * assignment     → IDENTIFIER "=" assignment
+ *                | equality ;
+ */
 public abstract class AssignParser extends VarParser {
 
     protected AssignParser(List<Token> tokens) {
         super(tokens);
     }
 
+    /**
+     *
+     * expression     → assignment ;
+     *
+     * @return
+     */
+    @Override
     protected Expr expression() {
         return assignment();
     }
 
+    /**
+     *
+     * assignment     → IDENTIFIER "=" assignment
+     *                | equality ;
+     *
+     * @return
+     */
     protected Expr assignment() {
         Expr expr = equality();
 

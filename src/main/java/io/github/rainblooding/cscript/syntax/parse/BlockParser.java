@@ -6,6 +6,13 @@ import io.github.rainblooding.cscript.syntax.Stmt;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * statement      → exprStmt
+ *                | printStmt
+ *                | block ;
+ *
+ * block          → "{" declaration* "}" ;
+ */
 import static io.github.rainblooding.cscript.base.TokenType.*;
 
 public class BlockParser extends AssignParser {
@@ -14,6 +21,14 @@ public class BlockParser extends AssignParser {
         super(tokens);
     }
 
+    /**
+     *
+     * statement      → exprStmt
+     *                | printStmt
+     *                | block ;
+     *
+     * @return
+     */
     @Override
     protected Stmt statement() {
         if (match(PRINT)) return printStatement();
@@ -21,6 +36,12 @@ public class BlockParser extends AssignParser {
         return expressionStatement();
     }
 
+    /**
+     *
+     * block          → "{" declaration* "}" ;
+     *
+     * @return
+     */
     protected List<Stmt> block() {
         List<Stmt> statements = new ArrayList<>();
 
