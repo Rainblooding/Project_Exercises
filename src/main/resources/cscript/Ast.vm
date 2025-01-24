@@ -1,0 +1,41 @@
+#if(${package_name} && ${package_name} != "")package ${package_name};#end
+
+import java.util.List;
+import io.github.rainblooding.cscript.base.Token;
+
+public abstract class ${base_name} {
+
+    abstract <R> R accept(Visitor<R> visitor);
+
+
+    interface Visitor<R> {
+
+#foreach($type in $types)
+        R visit${type.name}${base_name}(${base_name}.${type.name} ${base_name.toLowerCase()});
+#end
+    }
+
+#foreach($item in $types)
+    static class ${item.name} extends ${base_name} {
+#foreach($field in $item.fields)
+        final ${field.type} ${field.name};
+#end
+
+        public ${item.name}(#foreach($field in $item.fields) ${field.type} ${field.name}#if($foreach.hasNext),#end #end) {
+#foreach($field in $item.fields)
+            this.${field.name} = ${field.name};
+#end
+        }
+
+        @Override
+        <R> R accept(Visitor<R> visitor) {
+            return visitor.visit${item.name}${base_name}(this);
+        }
+
+
+    }
+
+#end
+}
+
+
