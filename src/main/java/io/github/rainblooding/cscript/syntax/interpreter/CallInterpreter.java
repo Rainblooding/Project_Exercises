@@ -2,11 +2,12 @@ package io.github.rainblooding.cscript.syntax.interpreter;
 
 import io.github.rainblooding.cscript.exception.RuntimeError;
 import io.github.rainblooding.cscript.syntax.Expr;
+import io.github.rainblooding.cscript.syntax.base.CSCallable;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CallInterpreter extends WhileInterpreter {
+public abstract class CallInterpreter extends WhileInterpreter {
 
     @Override
     public Object visitCallExpr(Expr.Call expr) {
@@ -17,12 +18,12 @@ public class CallInterpreter extends WhileInterpreter {
             arguments.add(evaluate(argument));
         }
 
-        if (!(callee instanceof CScCallable)) {
+        if (!(callee instanceof CSCallable)) {
             throw new RuntimeError(expr.paren,
                     "Can only call functions and classes.");
         }
 
-        CScCallable function = (CScCallable) callee;
+        CSCallable function = (CSCallable) callee;
         if (arguments.size() != function.arity()) {
             throw new RuntimeError(expr.paren, "Expected " +
                     function.arity() + " arguments but got " +

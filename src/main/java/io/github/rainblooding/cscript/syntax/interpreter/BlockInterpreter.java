@@ -14,7 +14,7 @@ public abstract class BlockInterpreter extends AssignInterpreter {
         return null;
     }
 
-    private void executeBlock(List<Stmt> statements,
+    public void executeBlock(List<Stmt> statements,
                       Environment environment) {
         Environment previous = this.environment;
         try {

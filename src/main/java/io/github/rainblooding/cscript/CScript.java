@@ -113,7 +113,7 @@ public class CScript {
 
 
     public static void main(String[] args) {
-        run("print clock();");
+        run("fun count(n) {if(n > 1) print n;}count(2);");
     }
 
 }

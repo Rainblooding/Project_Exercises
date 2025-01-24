@@ -6,7 +6,7 @@ import io.github.rainblooding.cscript.syntax.Stmt;
 
 public abstract class VarInterpreter extends StmtInterpreter {
 
-    protected final Environment globals = new Environment();
+    public final Environment globals = new Environment();
     protected Environment environment = globals;
 
     @Override

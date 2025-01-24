@@ -9,7 +9,7 @@ import io.github.rainblooding.cscript.syntax.Stmt;
 
 import java.util.List;
 
-public class Interpreter extends NativeInterpreter {
+public class Interpreter extends FunctionInterpreter {
 
     public Interpreter() {
         super();
