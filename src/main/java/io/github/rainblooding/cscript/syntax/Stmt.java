@@ -14,7 +14,7 @@ public abstract class Stmt {
         R visitPrintStmt(Stmt.Print stmt);
     }
 
-    static class Expression extends Stmt {
+    public static class Expression extends Stmt {
         final Expr expression;
 
         public Expression( Expr expression ) {
@@ -29,7 +29,7 @@ public abstract class Stmt {
 
     }
 
-    static class Print extends Stmt {
+    public static class Print extends Stmt {
         final Expr expression;
 
         public Print( Expr expression ) {
