@@ -5,10 +5,10 @@ import io.github.rainblooding.cscript.base.Token;
 
 public abstract class ${base_name} {
 
-    abstract <R> R accept(Visitor<R> visitor);
+    public abstract <R> R accept(Visitor<R> visitor);
 
 
-    interface Visitor<R> {
+    public interface Visitor<R> {
 
 #foreach($type in $types)
         R visit${type.name}${base_name}(${base_name}.${type.name} ${base_name.toLowerCase()});
@@ -16,9 +16,9 @@ public abstract class ${base_name} {
     }
 
 #foreach($item in $types)
-    static class ${item.name} extends ${base_name} {
+    public static class ${item.name} extends ${base_name} {
 #foreach($field in $item.fields)
-        final ${field.type} ${field.name};
+        public final ${field.type} ${field.name};
 #end
 
         public ${item.name}(#foreach($field in $item.fields) ${field.type} ${field.name}#if($foreach.hasNext),#end #end) {
@@ -28,7 +28,7 @@ public abstract class ${base_name} {
         }
 
         @Override
-        <R> R accept(Visitor<R> visitor) {
+        public <R> R accept(Visitor<R> visitor) {
             return visitor.visit${item.name}${base_name}(this);
         }
 
@@ -37,5 +37,3 @@ public abstract class ${base_name} {
 
 #end
 }
-
-
