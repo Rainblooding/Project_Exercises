@@ -113,7 +113,7 @@ public class CScript {
 
 
     public static void main(String[] args) {
-        run("if(1 < 2) {print 1;print 3;}else {print 2;print 2;} print 3;");
+        run("var i = 0;while(i != 10) {print i; i = i + 1;}");
     }
 
 }

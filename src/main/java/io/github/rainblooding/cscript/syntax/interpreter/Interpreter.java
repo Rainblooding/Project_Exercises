@@ -9,7 +9,7 @@ import io.github.rainblooding.cscript.syntax.Stmt;
 
 import java.util.List;
 
-public class Interpreter extends IfInterpreter {
+public class Interpreter extends WhileInterpreter {
 
     public void interpret(List<Stmt> statements) {
         try {
