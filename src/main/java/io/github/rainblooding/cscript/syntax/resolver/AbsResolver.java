@@ -21,7 +21,8 @@ public abstract class AbsResolver implements Expr.Visitor <Void>, Stmt.Visitor <
 
     protected enum FunctionType {
         NONE,
-        FUNCTION
+        FUNCTION,
+        METHOD
     }
 
     public AbsResolver(Interpreter interpreter) {

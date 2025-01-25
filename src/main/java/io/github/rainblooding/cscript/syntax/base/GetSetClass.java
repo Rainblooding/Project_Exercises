@@ -4,16 +4,16 @@ import io.github.rainblooding.cscript.syntax.interpreter.CallInterpreter;
 
 import java.util.List;
 
-public class GetClass extends CSClass {
+public class GetSetClass extends CSClass {
 
-    public GetClass(String name) {
+    public GetSetClass(String name) {
         super(name);
     }
 
 
     @Override
     public Object call(CallInterpreter interpreter, List<Object> arguments) {
-        CSInstance instance = new CSInstance(this);
+        GetSetInstance instance = new GetSetInstance(this);
         return instance;
     }
 }

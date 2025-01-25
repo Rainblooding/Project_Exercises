@@ -2,7 +2,7 @@ package io.github.rainblooding.cscript.syntax.base;
 
 public class CSInstance {
 
-    private CSClass klass;
+    protected CSClass klass;
 
     public CSInstance(CSClass klass) {
         this.klass = klass;
