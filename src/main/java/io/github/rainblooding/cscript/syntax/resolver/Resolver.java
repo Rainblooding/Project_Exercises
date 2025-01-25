@@ -5,7 +5,7 @@ import io.github.rainblooding.cscript.syntax.Expr;
 import io.github.rainblooding.cscript.syntax.Stmt;
 import io.github.rainblooding.cscript.syntax.interpreter.Interpreter;
 
-public class Resolver extends AbsResolver {
+public class Resolver extends ClassResolver {
 
     public Resolver(Interpreter interpreter) {
         super(interpreter);

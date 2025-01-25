@@ -11,7 +11,7 @@ import java.util.List;
 
 import static io.github.rainblooding.cscript.base.TokenType.*;
 
-public class Parser extends ReturnParser {
+public class Parser extends ClassParser {
 
 
 

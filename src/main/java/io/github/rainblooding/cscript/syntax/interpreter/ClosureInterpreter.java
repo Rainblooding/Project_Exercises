@@ -4,7 +4,7 @@ import io.github.rainblooding.cscript.syntax.Stmt;
 import io.github.rainblooding.cscript.syntax.base.CSFunction;
 import io.github.rainblooding.cscript.syntax.base.ClosureFunction;
 
-public class ClosureInterpreter extends ReturnInterpreter {
+public abstract class ClosureInterpreter extends ReturnInterpreter {
 
 
     @Override

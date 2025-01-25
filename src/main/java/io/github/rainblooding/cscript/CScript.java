@@ -119,22 +119,13 @@ public class CScript {
 
 
     public static void main(String[] args) {
-        run("fun makeCounter() {\nprint \"test1\";" +
-                "  var i = 0;\n" +
-                "  fun count() {\n" +
-                "    i = i + 1;\n" +
-                "\nprint \"？？？\";" +
-                "    print i;\n" +
+        run("class DevonshireCream {\n" +
+                "  serveOn() {\n" +
+                "    return \"Scones\";\n" +
                 "  }\n" +
-                "\nprint \"test2\";" +
-                "  return count;\n" +
                 "}\n" +
                 "\n" +
-                "var counter = makeCounter();\n" +
-                "\nprint \"test3\";" +
-                "counter(); \n" +
-                "\nprint \"test4\";" +
-                "counter(); print counter;");
+                "print DevonshireCream;");
     }
 
 }

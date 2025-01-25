@@ -6,7 +6,7 @@ import io.github.rainblooding.cscript.syntax.Expr;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ResolverInterpreter extends ClosureInterpreter {
+public abstract class ResolverInterpreter extends ClosureInterpreter {
 
     protected final Map<Expr, Integer> locals = new HashMap<>();
 

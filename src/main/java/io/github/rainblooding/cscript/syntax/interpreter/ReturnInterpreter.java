@@ -3,7 +3,7 @@ package io.github.rainblooding.cscript.syntax.interpreter;
 import io.github.rainblooding.cscript.syntax.Stmt;
 import io.github.rainblooding.cscript.syntax.base.Return;
 
-public class ReturnInterpreter extends FunctionInterpreter {
+public abstract class ReturnInterpreter extends FunctionInterpreter {
 
     @Override
     public Void visitReturnStmt(Stmt.Return stmt) {
