@@ -6,22 +6,18 @@ import io.github.rainblooding.cscript.syntax.interpreter.CallInterpreter;
 
 import java.util.List;
 
-public class CSFunction implements CSCallable {
+public class ClosureFunction extends CSFunction {
 
-    protected final Stmt.Function declaration;
+    private final Environment closure;
 
-    public CSFunction(Stmt.Function declaration) {
-        this.declaration = declaration;
-    }
-
-    @Override
-    public int arity() {
-        return declaration.params.size();
+    public ClosureFunction(Stmt.Function declaration, Environment closure) {
+        super(declaration);
+        this.closure = closure;
     }
 
     @Override
     public Object call(CallInterpreter interpreter, List<Object> arguments) {
-        Environment environment = new Environment(interpreter.globals);
+        Environment environment = new Environment(closure);
         for (int i = 0; i < declaration.params.size(); i++) {
             environment.define(declaration.params.get(i).lexeme,
                     arguments.get(i));
@@ -34,10 +30,5 @@ public class CSFunction implements CSCallable {
 
         interpreter.executeBlock(declaration.body, environment);
         return null;
-    }
-
-    @Override
-    public String toString() {
-        return "<fn " + declaration.name.lexeme + ">";
     }
 }

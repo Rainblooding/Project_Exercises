@@ -9,7 +9,7 @@ import io.github.rainblooding.cscript.syntax.Stmt;
 
 import java.util.List;
 
-public class Interpreter extends ReturnInterpreter {
+public class Interpreter extends ClosureInterpreter {
 
     public Interpreter() {
         super();
