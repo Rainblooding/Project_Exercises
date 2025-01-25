@@ -7,6 +7,7 @@ import io.github.rainblooding.cscript.exception.RuntimeError;
 import io.github.rainblooding.cscript.syntax.*;
 import io.github.rainblooding.cscript.syntax.interpreter.Interpreter;
 import io.github.rainblooding.cscript.syntax.parse.Parser;
+import io.github.rainblooding.cscript.syntax.resolver.Resolver;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -37,6 +38,11 @@ public class CScript {
 
         // Stop if there was a syntax error.
         if (hadError) return;
+
+        Resolver resolver = new Resolver(interpreter);
+        resolver.resolve(statements);
+        if (hadError) return;
+
         interpreter.interpret(statements);
 //        System.out.println(new AstPrinter().print(expression));
     }
@@ -117,6 +123,7 @@ public class CScript {
                 "  var i = 0;\n" +
                 "  fun count() {\n" +
                 "    i = i + 1;\n" +
+                "\nprint \"？？？\";" +
                 "    print i;\n" +
                 "  }\n" +
                 "\nprint \"test2\";" +

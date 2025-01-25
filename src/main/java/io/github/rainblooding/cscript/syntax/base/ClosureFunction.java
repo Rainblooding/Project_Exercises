@@ -28,7 +28,6 @@ public class ClosureFunction extends CSFunction {
             return returnValue.value;
         }
 
-        interpreter.executeBlock(declaration.body, environment);
         return null;
     }
 }
