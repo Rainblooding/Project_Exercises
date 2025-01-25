@@ -1,15 +1,12 @@
 package io.github.rainblooding.cscript.syntax.interpreter;
 
 import io.github.rainblooding.cscript.CScript;
-import io.github.rainblooding.cscript.base.Token;
-import io.github.rainblooding.cscript.context.Environment;
 import io.github.rainblooding.cscript.exception.RuntimeError;
-import io.github.rainblooding.cscript.syntax.Expr;
 import io.github.rainblooding.cscript.syntax.Stmt;
 
 import java.util.List;
 
-public class Interpreter extends MethodInterpreter {
+public class Interpreter extends NativeClassInterpreter {
 
     public Interpreter() {
         super();

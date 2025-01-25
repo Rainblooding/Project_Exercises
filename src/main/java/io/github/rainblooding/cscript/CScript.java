@@ -121,7 +121,7 @@ public class CScript {
     public static void main(String[] args) {
         run("class Bacon {\n" +
                 "  eat() {\n" +
-                "    print \"Crunch crunch crunch!\";\n" +
+                "    system.println( \"Crunch crunch crunch!\");\n" +
                 "  }\n" +
                 "}\n" +
                 "\n" +
