@@ -4,9 +4,9 @@ import io.github.rainblooding.cscript.exception.RuntimeError;
 import io.github.rainblooding.cscript.syntax.Expr;
 import io.github.rainblooding.cscript.syntax.Stmt;
 import io.github.rainblooding.cscript.syntax.base.GetClass;
-import io.github.rainblooding.cscript.syntax.base.GetInstance;
+import io.github.rainblooding.cscript.syntax.base.GetSetInstance;
 
-public class GetInterpreter extends ClassInterpreter {
+public abstract class GetInterpreter extends ClassInterpreter {
 
 
 
@@ -21,8 +21,8 @@ public class GetInterpreter extends ClassInterpreter {
     @Override
     public Object visitGetExpr(Expr.Get expr) {
         Object object = evaluate(expr.object);
-        if (object instanceof GetInterpreter) {
-            return ((GetInstance) object).get(expr.name);
+        if (object instanceof GetSetInstance) {
+            return ((GetSetInstance) object).get(expr.name);
         }
 
         throw new RuntimeError(expr.name,

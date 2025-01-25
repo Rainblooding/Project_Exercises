@@ -16,6 +16,7 @@ public abstract class Expr {
         R visitGroupingExpr(Expr.Grouping expr);
         R visitLiteralExpr(Expr.Literal expr);
         R visitLogicalExpr(Expr.Logical expr);
+        R visitSetExpr(Expr.Set expr);
         R visitUnaryExpr(Expr.Unary expr);
         R visitVariableExpr(Expr.Variable expr);
     }
@@ -136,6 +137,25 @@ public abstract class Expr {
         @Override
         public <R> R accept(Visitor<R> visitor) {
             return visitor.visitLogicalExpr(this);
+        }
+
+
+    }
+
+    public static class Set extends Expr {
+        public final Expr object;
+        public final Token name;
+        public final Expr value;
+
+        public Set( Expr object,  Token name,  Expr value ) {
+            this.object = object;
+            this.name = name;
+            this.value = value;
+        }
+
+        @Override
+        public <R> R accept(Visitor<R> visitor) {
+            return visitor.visitSetExpr(this);
         }
 
 

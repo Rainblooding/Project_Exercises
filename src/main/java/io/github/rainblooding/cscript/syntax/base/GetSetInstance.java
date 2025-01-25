@@ -6,11 +6,11 @@ import io.github.rainblooding.cscript.exception.RuntimeError;
 import java.util.HashMap;
 import java.util.Map;
 
-public class GetInstance extends CSInstance {
+public class GetSetInstance extends CSInstance {
 
     protected final Map<String, Object> fields = new HashMap<>();
 
-    public GetInstance(CSClass klass) {
+    public GetSetInstance(CSClass klass) {
         super(klass);
     }
 
@@ -21,5 +21,9 @@ public class GetInstance extends CSInstance {
 
         throw new RuntimeError(name,
                 "Undefined property '" + name.lexeme + "'.");
+    }
+
+    public void set(Token name, Object value) {
+        fields.put(name.lexeme, value);
     }
 }

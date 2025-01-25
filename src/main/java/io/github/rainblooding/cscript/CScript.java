@@ -119,9 +119,9 @@ public class CScript {
 
 
     public static void main(String[] args) {
-        run("class Bagel {}\n" +
+        run("class Bagel {var i = 0;}\n" +
                 "var bagel = Bagel();\n" +
-                "print bagel;");
+                "print bagel.i;");
     }
 
 }

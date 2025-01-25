@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Parser extends GetParser {
+public class Parser extends SetParser {
 
 
 

@@ -3,14 +3,15 @@ package io.github.rainblooding.cscript.syntax.resolver;
 import io.github.rainblooding.cscript.syntax.Expr;
 import io.github.rainblooding.cscript.syntax.interpreter.Interpreter;
 
-public abstract class GetResolver extends ClassResolver {
+public class SetResolver extends GetResolver {
 
-    public GetResolver(Interpreter interpreter) {
+    public SetResolver(Interpreter interpreter) {
         super(interpreter);
     }
 
     @Override
-    public Void visitGetExpr(Expr.Get expr) {
+    public Void visitSetExpr(Expr.Set expr) {
+        resolve(expr.value);
         resolve(expr.object);
         return null;
     }
