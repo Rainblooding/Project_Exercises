@@ -119,13 +119,9 @@ public class CScript {
 
 
     public static void main(String[] args) {
-        run("class DevonshireCream {\n" +
-                "  serveOn() {\n" +
-                "    return \"Scones\";\n" +
-                "  }\n" +
-                "}\n" +
-                "\n" +
-                "print DevonshireCream;");
+        run("class Bagel {}\n" +
+                "var bagel = Bagel();\n" +
+                "print bagel;");
     }
 
 }
