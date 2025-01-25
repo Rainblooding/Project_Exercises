@@ -51,7 +51,7 @@ public class CallParser extends ForParser {
         return expr;
     }
 
-    private Expr finishCall(Expr callee) {
+    protected Expr finishCall(Expr callee) {
         List<Expr> arguments = new ArrayList<>();
         if (!check(RIGHT_PAREN)) {
             do {

@@ -3,7 +3,7 @@ package io.github.rainblooding.cscript.syntax.interpreter;
 import io.github.rainblooding.cscript.syntax.Stmt;
 import io.github.rainblooding.cscript.syntax.base.CSClass;
 
-public class ClassInterpreter extends ResolverInterpreter {
+public abstract class ClassInterpreter extends ResolverInterpreter {
 
     @Override
     public Void visitClassStmt(Stmt.Class stmt) {

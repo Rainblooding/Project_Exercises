@@ -12,6 +12,7 @@ public abstract class Expr {
         R visitAssignExpr(Expr.Assign expr);
         R visitBinaryExpr(Expr.Binary expr);
         R visitCallExpr(Expr.Call expr);
+        R visitGetExpr(Expr.Get expr);
         R visitGroupingExpr(Expr.Grouping expr);
         R visitLiteralExpr(Expr.Literal expr);
         R visitLogicalExpr(Expr.Logical expr);
@@ -69,6 +70,23 @@ public abstract class Expr {
         @Override
         public <R> R accept(Visitor<R> visitor) {
             return visitor.visitCallExpr(this);
+        }
+
+
+    }
+
+    public static class Get extends Expr {
+        public final Expr object;
+        public final Token name;
+
+        public Get( Expr object,  Token name ) {
+            this.object = object;
+            this.name = name;
+        }
+
+        @Override
+        public <R> R accept(Visitor<R> visitor) {
+            return visitor.visitGetExpr(this);
         }
 
 

@@ -1,17 +1,13 @@
 package io.github.rainblooding.cscript.syntax.parse;
 
-import io.github.rainblooding.cscript.CScript;
 import io.github.rainblooding.cscript.base.Token;
-import io.github.rainblooding.cscript.base.TokenType;
-import io.github.rainblooding.cscript.syntax.Expr;
 import io.github.rainblooding.cscript.syntax.Stmt;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static io.github.rainblooding.cscript.base.TokenType.*;
 
-public class Parser extends ClassParser {
+public class Parser extends GetParser {
 
 
 
